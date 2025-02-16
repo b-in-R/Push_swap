@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 13:01:15 by rabiner           #+#    #+#             */
-/*   Updated: 2025/02/16 19:10:00 by rabiner          ###   ########.fr       */
+/*   Created: 2025/02/16 19:52:17 by rabiner           #+#    #+#             */
+/*   Updated: 2025/02/16 20:23:36 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(void)//pa
-{
 
-}
 
-void	push_b(void)//pb
+
+void	ft_start_sort(char **av, ...)
 {
+	va_list	ap;
+	//while (!va_list)
+		// envoyer dans atoi (const char *str)
+		// envoyer chaque nombre dans list_a add_back
+		
+	//fonction suivante
 	
+		//while (pas trie)
+			// tri selon binaire + printf operation
 }

@@ -6,14 +6,14 @@
 /*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/11 22:50:38 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/02/16 21:39:41 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
+# include "libft.h"
 
 /*
 	sa (swap a)		interverti les 2 premiers elements au sommet a
@@ -27,24 +27,26 @@
 	rb (rotate b)										b
 	rr (ra et rb)
 	
-	rra (reverse rotate a)	decale d'1 pos tous les elements de a, dernier devient 1er
+	rra (reverse rotate a)	decale d'1 pos tous les elements de a,
+							dernier devient 1er
 	rrb (reverse rotate b)										b
 	rrr (rra et rrb)
 */
 
-typedef struct	s_node_a
+typedef struct s_list_ps
 {
-	int				data;
-	struct s_node_a	*next;
-}	t_node_a;
+	int					value;
+	struct s_list_ps	*next;
+}						t_list_ps;
 
-typedef struct	s_node_b
-{
-	int				data;
-	struct s_node_b	*next;
-}	t_node_b;
+//void	print_list(t_list_ps *lst); // supp
 
+void		ft_start_sort(char **av, ...);
 
-
+t_list_ps	*ft_create(int value);
+void		ft_add_front(t_list_ps **lst, t_list_ps *new);
+void		ft_add_back(t_list_ps **lst, t_list_ps *new);
+void		ft_del_node(t_list_ps **lst, int value);
+void		ft_swap(t_list_ps **src, t_list_ps **dest, int value, int front);
 
 #endif
