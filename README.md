@@ -6,5 +6,5 @@ voir emplacement libft pour rendu
                             un tri, si c'est different: maj du clone + printf operations
                             si c'est identique: maj du clone + suppr operations en att de print
             
-            general ->      controler espaces4 -> tab4
+            general ->      controler tous espaces4 - tab4
         
