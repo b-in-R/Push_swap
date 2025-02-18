@@ -1,79 +1,65 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:22:03 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/16 21:02:31 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/02/18 15:27:31 by raphael          ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
 // OK
-
-
 int	check_nbrs(char **av)
 {
 	int	i;
 	int	j;
-	
+
 	i = 1;
 	while (av[i])
 	{
 		j = 0;
 		while (av[i][j])
 		{
-			if (av[i][j] > 47 && av[i][j] < 58)
+			if ((av[i][j] > 47 && av[i][j] < 58) || av[i][j] == '-')
 				j++;
 			else
 				return (0);
 		}
 		i++;
 	}
-	return (1);		
+	return (1);
 }
-
-
 
 int	main(int ac, char **av)
 {
-	t_list_ps	*list_a;
-	t_list_ps	*list_b;
-	
-	if (ac <= 1 || check_nbrs(av) == 0) // + check si plusieurs fois le meme nbr
+	if (ac <= 1 || check_nbrs(av) == 0)
 	{
 		ft_printf("Error\n");
 		return (0);
 	}
-	list_a = NULL;
-	list_b = NULL;
-	if (ac <= 5)
-		return 0;// a supp
-
-		//easy_sort(av);// voir pour renvoyer tous les chiffres
-	else
-	{
-		ft_start_sort(**av);
-	}
+	ft_sort(ac, av);
 	return (0);
-}
+} 
 
 /*
 // POUR TEST	
-void    print_list(t_list *lst)
+void    print_list(t_list_ps *lst)
 {
     while (lst)
     {
-        ft_printf("%d -> ", lst->content);
+        ft_printf("%d -> ", lst->value);
         lst = lst->next;
     }
     ft_printf("NULL\n");
 }
+*/
 
-// POUR TEST
+/*
+// POUR TEST LISTES -> OK
 int main(void)
 {
     t_list  *list_a = NULL;

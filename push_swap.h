@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/16 21:39:41 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/02/18 23:13:31 by raphael          ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -39,14 +39,23 @@ typedef struct s_list_ps
 	struct s_list_ps	*next;
 }						t_list_ps;
 
-//void	print_list(t_list_ps *lst); // supp
+//void		print_list(t_list_ps *lst);
 
-void		ft_start_sort(char **av, ...);
+void		ft_sort(int ac, char **av);
+void		ft_start(char **av, t_list_ps *list_a);
+int			check_double(t_list_ps *list_a);
+int			check_sort(t_list_ps *list_a);
 
 t_list_ps	*ft_create(int value);
-void		ft_add_front(t_list_ps **lst, t_list_ps *new);
-void		ft_add_back(t_list_ps **lst, t_list_ps *new);
-void		ft_del_node(t_list_ps **lst, int value);
-void		ft_swap(t_list_ps **src, t_list_ps **dest, int value, int front);
+// que pour 	ft_swap?	void		ft_add_front(t_list_ps **lst, t_list_ps *new);
+// que pour 	ft_swap?	void		ft_add_back(t_list_ps **lst, t_list_ps *new);
+void		ft_swap(t_list_ps **src, t_list_ps **dest, int front);
+// inutile?		void		ft_del_node(t_list_ps **lst, int value);
+
+void		ft_logic(t_list_ps **list_a);
+// que pour 	ft_logic?	int			ft_wich_bit(int n, int pos);
+
+// inutile		void	push_a(t_list_ps *list_a, t_list_ps *list_b);
+// inutile		void	push_b(t_list_ps *list_a, t_list_ps *list_b);
 
 #endif

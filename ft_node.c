@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node.c                                             :+:      :+:    :+:   */
+/*   ft_node.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:49:00 by by rabiner        #+#    #+#             */
-/*   Updated: 2025/02/16 21:45:36 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/02/18 20:34:34 by raphael          ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -23,6 +23,15 @@ t_list_ps	*ft_create(int value)
 	new->next = NULL;
 	return (new);
 }
+// ex appel ajout noeud: 
+//			ft_add_front(&list_a, ft_create(42));
+//
+// complet: 
+// 			t_list_ps	*temp = NULL;
+//			
+//			temp = ft_create(42);
+//			ft_add_front(&list_a, temp);
+
 
 void	ft_add_front(t_list_ps **lst, t_list_ps *new)
 {
@@ -50,29 +59,20 @@ void	ft_add_back(t_list_ps **lst, t_list_ps *new)
 	return ;
 }
 
-// ex.appel de fonction: ft_swap(&list_a, &list_b, 42[int voulu], 1[add_front])
-void	ft_swap(t_list_ps **src, t_list_ps **dest, int value, int front)
+// ex.appel de fonction: ft_swap(&list_a, &list_b, 42, 1[add_front])
+void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 {
-	t_list_ps	**node_ptr;
-	t_list_ps	*current;
+	t_list_ps	*node;
 
-	node_ptr = src;
-	current = *src;
 	if (!src || !*src || !dest)
 		return ;
-	while (current && current->value != value)
-	{
-		node_ptr = &current->next;
-		current = current->next;
-	}
-	if (!current)
-		return ;
-	*node_ptr = current->next;
-	current->next = NULL;
+	node = *src;
+	*src = node->next;
+	node->next = NULL;
 	if (front == 1)
-		ft_add_front(dest, current);
+		ft_add_front(dest, node);
 	else
-		ft_add_back(dest, current);
+		ft_add_back(dest, node);
 }
 
 // voir si possible de suppr
