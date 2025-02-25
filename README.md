@@ -8,3 +8,6 @@ voir emplacement libft pour rendu
             
             general ->      controler tous espaces4 - tab4
         
+- 25.02: 
+#define PL() printf("%s %d %s", __funk__, __LINE__, __file__);
+appel: PL();
