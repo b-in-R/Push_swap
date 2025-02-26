@@ -6,14 +6,14 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/18 23:13:31 by raphael          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:44:10 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "./libft/libft.h"
 
 /*
 	sa (swap a)		interverti les 2 premiers elements au sommet a
@@ -39,7 +39,15 @@ typedef struct s_list_ps
 	struct s_list_ps	*next;
 }						t_list_ps;
 
-//void		print_list(t_list_ps *lst);
+// -- pour tests ---
+# include <stdio.h>
+#define PL() printf("-----\nfile: %s\nfunction: %s\nline: %d\n-----\n",\
+		 __FILE__, __func__, __LINE__);
+
+void		print_list(t_list_ps *lst);
+
+// -----------------
+
 
 void		ft_sort(int ac, char **av);
 void		ft_start(char **av, t_list_ps *list_a);
@@ -47,8 +55,8 @@ int			check_double(t_list_ps *list_a);
 int			check_sort(t_list_ps *list_a);
 
 t_list_ps	*ft_create(int value);
-// que pour 	ft_swap?	void		ft_add_front(t_list_ps **lst, t_list_ps *new);
-// que pour 	ft_swap?	void		ft_add_back(t_list_ps **lst, t_list_ps *new);
+void		ft_add_front(t_list_ps **lst, t_list_ps *new);
+void		ft_add_back(t_list_ps **lst, t_list_ps *new);
 void		ft_swap(t_list_ps **src, t_list_ps **dest, int front);
 // inutile?		void		ft_del_node(t_list_ps **lst, int value);
 

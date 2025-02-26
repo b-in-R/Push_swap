@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:42:19 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/18 21:54:52 by raphael          ###   ########.fr       */
+/*   Updated: 2025/02/26 22:01:41 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -31,6 +31,7 @@ int ft_wich_bit(int n)
 	return (bit);
 }
 */
+/*		--- directement dans ft_logic > if (((*temp)->value >> pos & 1) == 0) ---
 int ft_wich_bit(int n, int pos)
 {
 	int bit;
@@ -38,24 +39,55 @@ int ft_wich_bit(int n, int pos)
 	bit = ((n >> pos) & 1);
 	return (bit);
 }
+*/
+
+int	ft_nbr_bit(t_list_ps *list_a)
+{
+	int	biggest;
+	int	nbr_bit;
+	int	temp;
+
+	biggest = 0;
+	nbr_bit = 0;
+	temp = 1;
+	while (list_a)
+	{
+		if (list_a->value > biggest)
+			biggest = list_a->value;
+		list_a = list_a->next;
+	}
+	while (temp <= biggest)
+	{
+		temp *= 2;
+		nbr_bit++;
+	}
+	PL();
+	printf("nbr_bit: %i\n", nbr_bit);
+	return (nbr_bit);
+}
 
 void    ft_logic(t_list_ps **list_a)
 {
 	t_list_ps	*list_b;
 	t_list_ps	**temp;
 	int     	pos;
+	int			nbr_bit;
 	// pas ici		char    	*operation;// pour print l'operateur utilise
 	
 	//				operation = NULL;
+	PL();
 	list_b = NULL;
 	pos = 0;
-	while (pos < 4)// a corriger
+	nbr_bit = ft_nbr_bit(*list_a);// ici
+	while (pos <= nbr_bit)
 	{
+		print_list(*list_a);
 		temp = list_a;
 		while (*temp)
 		{
-			if (ft_wich_bit((*temp)->value, pos) == 0)
-				ft_swap(temp, &list_b, 1);
+			if (((*temp)->value >> pos & 1) == 0)
+			//if (ft_wich_bit((*temp)->value, pos) == 0)// si 0 -> list_b, si 1 -> next
+				ft_swap(temp, &list_b, 1);// ft_node.c
 			else
 				temp = &((*temp)->next);
 		}
@@ -63,6 +95,7 @@ void    ft_logic(t_list_ps **list_a)
 		while (list_b)
 			ft_swap(&list_b, list_a, 1);
 		pos++;
+			print_list(*temp);		
 		//			ft_printf("%s\n", operation);// emplacement a voir
 	}
 }

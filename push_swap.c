@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:22:03 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/18 15:27:31 by raphael          ###   ########.fr       */
+/*   Updated: 2025/02/26 23:35:31 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,29 +34,31 @@ int	check_nbrs(char **av)
 	return (1);
 }
 
+
+// POUR TEST	
+void    print_list(t_list_ps *lst)
+{
+	printf("printf_list: ");
+    while (lst)
+    {
+        printf("%d -> ", lst->value);
+        lst = lst->next;
+    }
+    printf("NULL\n");
+}
+
+
 int	main(int ac, char **av)
 {
 	if (ac <= 1 || check_nbrs(av) == 0)
 	{
-		ft_printf("Error\n");
+		printf("Error\n");
+		//ft_printf("Error\n");// ./libft/ft_printf.c
 		return (0);
 	}
-	ft_sort(ac, av);
+	ft_sort(ac, av);// ft_sort.c
 	return (0);
 } 
-
-/*
-// POUR TEST	
-void    print_list(t_list_ps *lst)
-{
-    while (lst)
-    {
-        ft_printf("%d -> ", lst->value);
-        lst = lst->next;
-    }
-    ft_printf("NULL\n");
-}
-*/
 
 /*
 // POUR TEST LISTES -> OK

@@ -6,7 +6,7 @@
 #    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/11 13:00:08 by rabiner           #+#    #+#              #
-#    Updated: 2025/02/18 23:07:59 by raphael          ###   ########.fr        #
+#    Updated: 2025/02/26 23:48:50 by raphael          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,11 +18,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFTDIR = libft
 
-SRCS = push_swap.c ft_node.c ft_sort.c ft_logic.c\
-		#ft_swap.c ft_push.c ft_rotate.c ft_rerotate.c \
+SRCS =	push_swap.c ft_node.c ft_sort.c ft_logic.c\
+		ft_swap.c #ft_push.c ft_rotate.c ft_rerotate.c \
 
-SRCSLIB = ft_printf.c ft_printf_nbrs.c ft_printf_write.c \
-			ft_atoi.c \
+SRCSLIB = 	ft_atoi.c \
+			#ft_printf.c ft_printf_nbrs.c ft_printf_write.c \
 
 LIBFT_SRCS = $(addprefix $(LIBFTDIR)/, $(SRCSLIB))
 
