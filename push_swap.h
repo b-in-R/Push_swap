@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/26 19:44:10 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 11:38:06 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "./libft/libft.h"
+# include <stdlib.h>
 
 /*
 	sa (swap a)		interverti les 2 premiers elements au sommet a
@@ -44,13 +45,13 @@ typedef struct s_list_ps
 #define PL() printf("-----\nfile: %s\nfunction: %s\nline: %d\n-----\n",\
 		 __FILE__, __func__, __LINE__);
 
-void		print_list(t_list_ps *lst);
+void		print_list(t_list_ps **lst);
 
 // -----------------
 
 
 void		ft_sort(int ac, char **av);
-void		ft_start(char **av, t_list_ps *list_a);
+void		ft_start(char **av, t_list_ps **list_a);
 int			check_double(t_list_ps *list_a);
 int			check_sort(t_list_ps *list_a);
 

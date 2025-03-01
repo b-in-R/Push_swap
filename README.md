@@ -32,3 +32,16 @@ voir emplacement libft pour rendu
 #define PL() printf("-----\nfile: %s\nfunction: %s\nline: %d\n-----\n",\
 		 __FILE__, __func__, __LINE__);
 appel: PL();
+
+
+- 1.03:
+		fait:	-ajoute fichier complete.c pour tests avec toutes les fonctions
+
+		a faire:	-	controle .h prototypes
+					-	mise au propre fichiers
+					- 	heck jours precedents
+					-	enregistrer dans nouvelle chaine les operations, faire
+						copie de list_a chaque iteration. imprimer les operations
+						uniquement si list_a != copie
+		
+		en cours:	-	ft_logic (complete) copy_list 

@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:42:19 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/26 22:01:41 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:44:24 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -62,40 +62,75 @@ int	ft_nbr_bit(t_list_ps *list_a)
 		nbr_bit++;
 	}
 	PL();
-	printf("nbr_bit: %i\n", nbr_bit);
+	printf("nbr_bit: %i\n", nbr_bit);// pour test
 	return (nbr_bit);
 }
 
-void    ft_logic(t_list_ps **list_a)
+t_list_ps	copy_list(t_list_ps **list_a)// , t_list_ps **copy // a voir, + voir si on retourne un pointeur?
+{
+	t_list_ps	*copy;
+
+	copy->value = (*list_a)->value;
+	while (&(*list_a)->value != NULL)// a voir mais sa semble complique tout ca
+	{
+		
+	}
+}
+
+
+void    ft_logic(t_list_ps **list_a)// a verif annotations etc
 {
 	t_list_ps	*list_b;
 	t_list_ps	**temp;
+	//t_list_ps	*copy; //peut etre pas besoin ici, return t_list_ps
 	int     	pos;
 	int			nbr_bit;
-	// pas ici		char    	*operation;// pour print l'operateur utilise
-	
-	//				operation = NULL;
-	PL();
-	list_b = NULL;
+	int	iteration = 1;// pour test iteration
+	int	operations = 0;// pour test
+
+	list_b = NULL;// voir si suppr
 	pos = 0;
-	nbr_bit = ft_nbr_bit(*list_a);// ici
+	nbr_bit = ft_nbr_bit(*list_a);
+	//copy = NULL;// a voir si suppr
+	//copy = copy_list(list_a, &copy);// directement copy_list (return t_list_ps)
+	copy_list(list_a);
 	while (pos <= nbr_bit)
 	{
-		print_list(*list_a);
+		print_list(list_a);// pour test
 		temp = list_a;
+		printf("\niteration %i\n\n", iteration);// pour test
+		iteration++;// pour test
 		while (*temp)
 		{
-			if (((*temp)->value >> pos & 1) == 0)
-			//if (ft_wich_bit((*temp)->value, pos) == 0)// si 0 -> list_b, si 1 -> next
+			if (((*temp)->value >> pos & 1) == 0)//if (ft_wich_bit((*temp)->value, pos) == 0)// si 0 -> list_b, si 1 -> next
+			{
+				printf("swap B");// pour test
+				operations++;// pour test
 				ft_swap(temp, &list_b, 1);// ft_node.c
+				printf("\n");// pour test
+			}
 			else
+			{
+				printf("rotate A\n");// pour test
 				temp = &((*temp)->next);
+				operations++;// pour test
+			}
 		}
 		// retour sur list_a --> ok
 		while (list_b)
+		{
+			printf("swap A");// pour test
 			ft_swap(&list_b, list_a, 1);
+			printf("\n");// pour test
+			operations++;// pour test
+		}
 		pos++;
-			print_list(*temp);		
+		print_list(temp);// pour test
+		if (check_sort(*list_a) == 1)
+		{
+			printf("\n\noperations: %i\n\n", operations);// pour test
+			return ;
+		}
 		//			ft_printf("%s\n", operation);// emplacement a voir
 	}
 }

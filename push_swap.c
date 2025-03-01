@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:22:03 by raphael           #+#    #+#             */
-/*   Updated: 2025/02/26 23:35:31 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:32:23 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -36,16 +36,25 @@ int	check_nbrs(char **av)
 
 
 // POUR TEST	
-void    print_list(t_list_ps *lst)
+void	print_list(t_list_ps **lst)
 {
-	printf("printf_list: ");
-    while (lst)
-    {
-        printf("%d -> ", lst->value);
-        lst = lst->next;
-    }
-    printf("NULL\n");
+	t_list_ps	*current;
+	
+	if (!lst || !*lst)
+	{
+		//printf("printf_list: lst ou *lst = NULL\n");
+		return;
+	}
+	printf("\n\nprint list_a: ");
+	current = *lst;
+	while (current)
+	{
+		printf("%d -> ", current->value);
+		current = current->next;
+	}
+	printf("NULL\n");
 }
+//------------------
 
 
 int	main(int ac, char **av)
