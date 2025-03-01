@@ -43,5 +43,9 @@ appel: PL();
 					-	enregistrer dans nouvelle chaine les operations, faire
 						copie de list_a chaque iteration. imprimer les operations
 						uniquement si list_a != copie
+					-	faire pre-tri (bubble sort) pour assigner nombres (1, 2, 3, etc)
+						aux int entrant (apres atoi) pour tri plus rapide des gros nombres, et pas besoin de gerer les binaires negatifs etc
+					-	voir ft_node.c - t_list_ps	*ft_create(int value)
+					-	ft_logic 25lignes!
 		
 		en cours:	-	ft_logic (complete) copy_list 

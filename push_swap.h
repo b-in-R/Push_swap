@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/01 11:38:06 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:58:04 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -62,7 +62,9 @@ void		ft_swap(t_list_ps **src, t_list_ps **dest, int front);
 // inutile?		void		ft_del_node(t_list_ps **lst, int value);
 
 void		ft_logic(t_list_ps **list_a);
-// que pour 	ft_logic?	int			ft_wich_bit(int n, int pos);
+int			ft_nbr_bit(t_list_ps *list_a);// uniquement ft_logic?
+t_list_ps	copy_list(t_list_ps **list_a);// uniquement ft_logic?
+
 
 // inutile		void	push_a(t_list_ps *list_a, t_list_ps *list_b);
 // inutile		void	push_b(t_list_ps *list_a, t_list_ps *list_b);

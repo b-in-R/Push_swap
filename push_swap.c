@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 11:22:03 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/01 17:32:23 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:59:05 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -34,7 +34,7 @@ int	check_nbrs(char **av)
 	return (1);
 }
 
-
+//----------------------------------------
 // POUR TEST	
 void	print_list(t_list_ps **lst)
 {
@@ -54,7 +54,7 @@ void	print_list(t_list_ps **lst)
 	}
 	printf("NULL\n");
 }
-//------------------
+//---------------------------------------
 
 
 int	main(int ac, char **av)

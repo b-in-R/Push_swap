@@ -6,12 +6,13 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:49:00 by by rabiner        #+#    #+#             */
-/*   Updated: 2025/03/01 12:14:45 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:55:59 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
 
+// voir pour quelle utilisation la fonction pointeur
 t_list_ps	*ft_create(int value)
 {
 	t_list_ps	*new;
@@ -75,7 +76,7 @@ void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 	else
 		ft_add_back(dest, node);
 }
-
+/*
 // voir si possible de suppr
 void	ft_del_node(t_list_ps **lst, int value)
 {
@@ -102,3 +103,4 @@ void	ft_del_node(t_list_ps **lst, int value)
 	free(temp);
 	return ;
 }
+*/

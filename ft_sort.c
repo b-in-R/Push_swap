@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:52:17 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/01 17:45:54 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 17:48:26 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -112,7 +112,7 @@ void	ft_sort(int ac, char **av)
 */
 
 
-/*//		MEME FNC OPTIMISEE QUE CHECK_DOUBLE
+/*	//		MEME FNC OPTIMISEE QUE CHECK_DOUBLE
 int	check_double(t_list_ps *list_a)
 {
 	t_list_ps	*temp;
