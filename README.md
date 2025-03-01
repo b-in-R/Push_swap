@@ -37,15 +37,18 @@ appel: PL();
 - 1.03:
 		fait:	-ajoute fichier complete.c pour tests avec toutes les fonctions
 
-		a faire:	-	controle .h prototypes
-					-	mise au propre fichiers
-					- 	heck jours precedents
-					-	enregistrer dans nouvelle chaine les operations, faire
-						copie de list_a chaque iteration. imprimer les operations
-						uniquement si list_a != copie
-					-	faire pre-tri (bubble sort) pour assigner nombres (1, 2, 3, etc)
+		a faire:	- controle .h prototypes
+					- mise au propre fichiers
+					- heck jours precedents
+
+					- ft_logic.c - copy_list: enregistrer dans nouvelle chaine
+						les operations, faire copie de list_a chaque iteration.
+						imprimer les operations uniquement si list_a != copie
+
+					- faire pre-tri (bubble sort) pour assigner nombres (1, 2, 3, etc)
 						aux int entrant (apres atoi) pour tri plus rapide des gros nombres, et pas besoin de gerer les binaires negatifs etc
-					-	voir ft_node.c - t_list_ps	*ft_create(int value)
-					-	ft_logic 25lignes!
+
+					- voir ft_node.c - t_list_ps	*ft_create(int value)
+					- ft_logic 25lignes!
 		
-		en cours:	-	ft_logic (complete) copy_list 
+		en cours:	- ft_logic (complete) copy_list 
