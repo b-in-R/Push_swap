@@ -35,11 +35,11 @@ appel: PL();
 
 
 - 1.03:
-		fait:	-ajoute fichier complete.c pour tests avec toutes les fonctions
+		fait:		- ajoute fichier complete.c pour tests avec toutes les fonctions
 
 		a faire:	- controle .h prototypes
 					- mise au propre fichiers
-					- heck jours precedents
+					- check jours precedents
 
 					- ft_logic.c - copy_list: enregistrer dans nouvelle chaine
 						les operations, faire copie de list_a chaque iteration.
@@ -52,3 +52,11 @@ appel: PL();
 					- ft_logic 25lignes!
 		
 		en cours:	- ft_logic (complete) copy_list 
+
+- 7.03:
+		fait:		- ok jusqu'a ft_logic
+
+		a faire:	- check jours precedents
+					- tri radix selon list_a->num
+					- mettre au propre fichiers separes + normi
+					- makefile et .h

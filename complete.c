@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:52:17 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/01 18:08:29 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/07 21:59:40 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -18,6 +18,7 @@
 //																			//
 //////////////////////////////////////////////////////////////////////////////
 
+// ok
 void	ft_add_back(t_list_ps **lst, t_list_ps *new)
 {
 	t_list_ps	*tmp;
@@ -36,6 +37,7 @@ void	ft_add_back(t_list_ps **lst, t_list_ps *new)
 	return ;
 }
 
+// ok 
 t_list_ps	*ft_create(int value)
 {
 	t_list_ps	*new;
@@ -48,6 +50,7 @@ t_list_ps	*ft_create(int value)
 	return (new);
 }
 
+// ok
 void	ft_add_front(t_list_ps **lst, t_list_ps *new)
 {
 	if (!lst || !new)
@@ -56,6 +59,7 @@ void	ft_add_front(t_list_ps **lst, t_list_ps *new)
 	*lst = new;
 }
 
+// ok
 void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 {
 	t_list_ps	*node;
@@ -73,16 +77,29 @@ void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 
 //----------------------------------------
 
+void	print_lst_num(t_list_ps **lst)
+{
+	t_list_ps	*current;
+	
+	if (!lst || !*lst)
+		return;
+	current = *lst;
+	while (current)
+	{
+		printf("%d -> ", current->num);
+		current = current->next;
+	}
+	printf("NULL\n");
+}
+
 void	print_list(t_list_ps **lst)
 {
 	t_list_ps	*current;
 	
 	if (!lst || !*lst)
 	{
-		//printf("printf_list: lst ou *lst = NULL\n");
 		return;
 	}
-	printf("\n\nprint list_a: ");
 	current = *lst;
 	while (current)
 	{
@@ -118,17 +135,6 @@ int	ft_nbr_bit(t_list_ps *list_a)
 	return (nbr_bit);
 }
 
-t_list_ps	copy_list(t_list_ps **list_a)// , t_list_ps **copy // a voir, + voir si on retourne un pointeur?
-{
-	t_list_ps	*copy;
-
-	copy->value = (*list_a)->value;
-	while (&(*list_a)->value != NULL)// a voir mais sa semble complique tout ca
-	{
-		
-	}
-}
-
 void    ft_logic(t_list_ps **list_a)
 {
 	t_list_ps	*list_b;
@@ -143,8 +149,10 @@ void    ft_logic(t_list_ps **list_a)
 	pos = 0;
 	nbr_bit = ft_nbr_bit(*list_a);
 	//copy = NULL;// a voir si suppr
+	/*
 	//copy = copy_list(list_a, &copy);// directement copy_list (return t_list_ps)
 	copy_list(list_a);
+	*/
 	while (pos <= nbr_bit)
 	{
 		print_list(list_a);// pour test
@@ -229,6 +237,7 @@ int	check_double(t_list_ps *list_a)
 	return (1);
 }
 
+// ok
 int	check_sort(t_list_ps *list_a)
 {
 	if (!list_a)
@@ -239,22 +248,110 @@ int	check_sort(t_list_ps *list_a)
 	while (list_a->next != NULL)
 	{
 		if (list_a->value > list_a->next->value)
-		{
-	
-			//printf("check_sort: 'list_a->value' > 'list_a->next->value'!\n");
 			return (0);
-		}
 		list_a = list_a->next;
 	}
 	return (1);
 }
+
+//-------------------------	A VOIR	--------------
+
+
+// ok
+void	swap_next(t_list_ps **list_copy)
+{
+	t_list_ps	*first;
+	t_list_ps	*second;
+
+	first = *list_copy;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*list_copy = second;
+}
+
+// ok
+void	sort_copy(t_list_ps **list_copy, int ac)
+{
+	t_list_ps	**temp;
+
+	while (check_sort(*list_copy) != 1)
+	{
+		temp = list_copy;
+		while ((*temp) && (*temp)->next && ac > 1)
+		{
+			if ((*temp)->value > (*temp)->next->value)
+				swap_next(temp);
+			temp = &((*temp)->next);
+		}
+		ac--;
+	}
+}
+
+void	allocate_num(t_list_ps **list)
+{
+	t_list_ps	*temp;
+	int			i;
+
+	temp = *list;
+	i = 0;
+	while (temp)
+	{
+		temp->num = i;
+		i++;
+		temp = temp->next;
+	}
+}
+
+
+void	ft_copy_list(t_list_ps *list_a, int ac)
+{
+	t_list_ps	*list_copy;
+	t_list_ps	*node_act;
+	t_list_ps	*head_a;
+
+	// creation list_copy selon list_a
+	list_copy = NULL;
+	head_a = list_a;
+	while (list_a)
+	{
+		node_act =  ft_create(list_a->value);
+		if (!node_act)
+			return ;
+		ft_add_back(&list_copy, node_act);
+		list_a = list_a->next;
+	}
+	
+	//tri list_copy et attribution list_copy->num
+	sort_copy(&list_copy, ac);
+	allocate_num(&list_copy);
+	
+
+	
+	//attribution list_a->num selon list_copy->num
+	while (list_copy)
+	{
+		while (list_a)
+		{
+			if (list_copy->value == list_a->value)
+			{
+				list_a->num = list_copy->num;
+				break ;
+			}
+			list_a = list_a->next;
+		}
+		list_a = head_a;
+		list_copy = list_copy->next;
+	}
+}
+
+//-------------------------------------------------------
 
 void	ft_sort(int ac, char **av)
 {
 	t_list_ps	*list_a;
 
 	list_a = NULL;
-	(void)ac;
 	ft_start(av, &list_a);// ici
 	if (check_double(list_a) == 0)// ici
 	{
@@ -262,18 +359,23 @@ void	ft_sort(int ac, char **av)
 		//ft_printf("Error\n");// ./libft/ft_printf.c/
 		return ;
 	}
-	// CONDITION A CORRIGER: ACTUEL: des que 2 noeud sont dans l'ordre, checksort return 1
-	//while (check_sort(list_a) != 1)// ac < 3 &&		pour test
+	ft_copy_list(list_a, ac);
+
+	printf("\nAvant tri:\nlist_a->value:\t");
+	print_list(&list_a);
+	printf("list_a->num:\t");
+	print_lst_num(&list_a);
+	
 	if (check_sort(list_a) != 1)
 	{
 		// -----------------appel fonction tri-------------
 		printf("ft_sort pas trie-> vers logic\n");//test
 		ft_logic(&list_a);
-		
-		//ac++;//testA
-		//testAft_logic(&list_a); // ft_logic.c
 	}
+	printf("\nApres tri:\nlist_a->value:\t");
 	print_list(&list_a);
+	printf("list_a->num:\t");
+	print_lst_num(&list_a);
 	printf("ft_sort ok\n");
 	//while ()
 		// envoyer dans atoi (const char *str) --> ok dans ft_start_sort
@@ -284,7 +386,7 @@ void	ft_sort(int ac, char **av)
 
 int	main(void)
 {
-	int	ac = 0;
+	int	ac = 6;
 	char	*str[] = {"./a.out", "4", "2", "6", "3", "7", (char *)0};
 	char	**av = str;
 	ft_sort(ac, av);

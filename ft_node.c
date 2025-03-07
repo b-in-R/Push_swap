@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 22:49:00 by by rabiner        #+#    #+#             */
-/*   Updated: 2025/03/01 17:55:59 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/07 19:31:30 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -65,7 +65,7 @@ void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 {
 	t_list_ps	*node;
 
-	PL();
+	PL();//
 	if (!src || !*src || !dest)
 		return ;
 	node = *src;

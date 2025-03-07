@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/01 17:58:04 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/07 21:58:08 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -37,6 +37,7 @@
 typedef struct s_list_ps
 {
 	int					value;
+	int					num;
 	struct s_list_ps	*next;
 }						t_list_ps;
 
@@ -46,6 +47,7 @@ typedef struct s_list_ps
 		 __FILE__, __func__, __LINE__);
 
 void		print_list(t_list_ps **lst);
+void		print_lst_num(t_list_ps **lst);
 
 // -----------------
 

@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:52:17 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/01 17:48:26 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/01 18:12:18 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -86,7 +86,7 @@ void	ft_sort(int ac, char **av)
 	}
 	// CONDITION A CORRIGER: ACTUEL: des que 2 noeud sont dans l'ordre, checksort return 1
 	//while (check_sort(list_a) != 1)// ac < 3 &&		pour test
-	if (check_sort(list_a) != 1)
+	if (check_sort(list_a) != 1)// ici
 	{
 		// -----------------appel fonction tri-------------
 		printf("ft_sort pas trie-> vers logic\n");//test
