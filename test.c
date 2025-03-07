@@ -217,12 +217,7 @@ void	ft_sort(int ac, char **av)
 	list_a = NULL;
 	//(void)ac;
 	ft_start(av, &list_a);// ici
-	if (check_double(list_a) == 0)// ici
-	{
-		printf("Error\n");//test
-		//ft_printf("Error\n");// ./libft/ft_printf.c/
-		return ;
-	}
+
 
 	ft_copy_list(list_a, ac);
 
@@ -235,7 +230,7 @@ void	ft_sort(int ac, char **av)
 	{
 		// -----------------appel fonction tri-------------
 		printf("ft_sort pas trie-> vers logic\n");//test
-		ft_logic(&list_a);
+		//ft_logic(&list_a);
 	}
 	printf("\nApres tri:\nlist_a->value:\t");
 	print_list(&list_a);

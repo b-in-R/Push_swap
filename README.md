@@ -60,3 +60,5 @@ appel: PL();
 					- tri radix selon list_a->num
 					- mettre au propre fichiers separes + normi
 					- makefile et .h
+		
+		en cours:	- test.c ok, complete.c pour suite (maj ok)
