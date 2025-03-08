@@ -6,13 +6,11 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:52:17 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/07 21:59:40 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/08 20:11:53 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
 #include "push_swap.h"
-#include <stdlib.h>
-
 
 //////////////////////////////////////////////////////////////////////////////
 //																			//
@@ -131,7 +129,7 @@ int	ft_nbr_bit(t_list_ps *list_a)
 		temp *= 2;
 		nbr_bit++;
 	}
-	printf("nbr_bit: %i\n", nbr_bit);
+//	printf("nbr_bit: %i\n", nbr_bit);
 	return (nbr_bit);
 }
 
@@ -139,55 +137,84 @@ void    ft_logic(t_list_ps **list_a)
 {
 	t_list_ps	*list_b;
 	t_list_ps	**temp;
-	//t_list_ps	*copy; //peut etre pas besoin ici, return t_list_ps
 	int     	pos;
 	int			nbr_bit;
 	int	iteration = 1;// pour test iteration
 	int	operations = 0;// pour test
-
+	
 	list_b = NULL;// voir si suppr
 	pos = 0;
 	nbr_bit = ft_nbr_bit(*list_a);
-	//copy = NULL;// a voir si suppr
-	/*
-	//copy = copy_list(list_a, &copy);// directement copy_list (return t_list_ps)
-	copy_list(list_a);
-	*/
+/*
+	printf("Depart:");
+	printf("\nlist_a:\t\t");
+	print_list(list_a);
+	printf("list_a->num\t");
+	print_lst_num(list_a);
+	printf("\nlist_b:\t\t");
+	print_list(&list_b);
+	printf("\nlist_b->num\t");
+	print_lst_num(&list_b);
+	printf("\n");
+*/
+	
 	while (pos <= nbr_bit)
 	{
-		print_list(list_a);// pour test
+//		print_lst_num(list_a);// pour test
 		temp = list_a;
-		printf("\niteration %i\n\n", iteration);// pour test
+//		printf("\niteration %i\n\n", iteration);// pour test
 		iteration++;// pour test
 		while (*temp)
 		{
-			if (((*temp)->value >> pos & 1) == 0)//if (ft_wich_bit((*temp)->value, pos) == 0)// si 0 -> list_b, si 1 -> next
+			if (((*temp)->num >> pos & 1) == 0)//if (ft_wich_bit((*temp)->value, pos) == 0)// si 0 -> list_b, si 1 -> next
 			{
-				printf("swap B");// pour test
+				printf("pb\n");// pour test
 				operations++;// pour test
 				ft_swap(temp, &list_b, 1);// ft_node.c
-				printf("\n");// pour test
 			}
 			else
 			{
-				printf("rotate A\n");// pour test
+				printf("ra\n");// pour test
 				temp = &((*temp)->next);
 				operations++;// pour test
 			}
 		}
-		// retour sur list_a --> ok
+/*		// retour sur list_a --> ok
+		printf("\n-----\nAvant tri:");
+		printf("\nlist_a:\t\t");
+		print_list(list_a);
+		printf("list_a->num\t");
+		print_lst_num(list_a);
+		printf("\nlist_b:\t\t");
+		print_list(&list_b);
+		printf("list_b->num\t");
+		print_lst_num(&list_b);
+		printf("\n");
+*/
+
 		while (list_b)
 		{
-			printf("swap A");// pour test
+			printf("pa\n");// pour test
 			ft_swap(&list_b, list_a, 1);
-			printf("\n");// pour test
 			operations++;// pour test
 		}
 		pos++;
-		print_list(temp);// pour test
+/*
+		printf("\n---------\nApres tri:");
+		printf("\nlist_a:\t\t");
+		print_list(list_a);
+		printf("list_a->num\t");
+		print_lst_num(list_a);
+		printf("\nlist_b:\t\t");
+		print_list(&list_b);
+		printf("\nlist_b->num:\t");
+		print_lst_num(&list_b);
+		printf("\n");
+//		print_list(temp);// pour test
+*/
 		if (check_sort(*list_a) == 1)
 		{
-			printf("\n\noperations: %i\n\n", operations);// pour test
+			//printf("\n\noperations: %i\n\n", operations);// pour test
 			return ;
 		}
 		//			ft_printf("%s\n", operation);// emplacement a voir
@@ -198,12 +225,12 @@ void    ft_logic(t_list_ps **list_a)
 //																				//
 //////////////////////////////////////////////////////////////////////////////////
 
-void	ft_start(char **av, t_list_ps **list_a)
+void	ft_start(char **av, t_list_ps **list_a, int start)
 {
 	int	i;
 	int	temp;
 
-	i = 1;
+	i = start;
 	temp = 0;
 	while (av[i])
 	{
@@ -211,9 +238,8 @@ void	ft_start(char **av, t_list_ps **list_a)
 		//testAtemp = ft_atoi(av[i++]);// chaque nombre en int
 		ft_add_back(list_a, ft_create(temp));
 	}
-	print_list(list_a);// pour test
+//	print_list(list_a);// pour test
 }
-
 
 int	check_double(t_list_ps *list_a)
 {
@@ -242,7 +268,7 @@ int	check_sort(t_list_ps *list_a)
 {
 	if (!list_a)
 	{
-		printf("--- erreur !list_a ---\n");
+//		printf("--- erreur !list_a ---\n");
 		return 0;
 	}
 	while (list_a->next != NULL)
@@ -347,12 +373,12 @@ void	ft_copy_list(t_list_ps *list_a, int ac)
 
 //-------------------------------------------------------
 
-void	ft_sort(int ac, char **av)
+void	ft_sort(int ac, char **av, int start)
 {
 	t_list_ps	*list_a;
 
 	list_a = NULL;
-	ft_start(av, &list_a);// ici
+	ft_start(av, &list_a, start);// ici
 	if (check_double(list_a) == 0)// ici
 	{
 		printf("Error\n");//test
@@ -361,29 +387,32 @@ void	ft_sort(int ac, char **av)
 	}
 	ft_copy_list(list_a, ac);
 
-	printf("\nAvant tri:\nlist_a->value:\t");
+/*	printf("\nAvant tri:\nlist_a->value:\t");
 	print_list(&list_a);
 	printf("list_a->num:\t");
 	print_lst_num(&list_a);
+*/
 	
 	if (check_sort(list_a) != 1)
 	{
 		// -----------------appel fonction tri-------------
-		printf("ft_sort pas trie-> vers logic\n");//test
+//		printf("ft_sort pas trie-> vers logic\n");//test
 		ft_logic(&list_a);
 	}
+/*
 	printf("\nApres tri:\nlist_a->value:\t");
 	print_list(&list_a);
 	printf("list_a->num:\t");
 	print_lst_num(&list_a);
 	printf("ft_sort ok\n");
+*/
 	//while ()
 		// envoyer dans atoi (const char *str) --> ok dans ft_start_sort
 		// check si plusieurs fois le meme nbr -> Error --> ok
 		// envoyer chaque nombre dans list_a add_back --> ok
 	// retourne a push_swap.c -> main > fin
 }
-
+/*
 int	main(void)
 {
 	int	ac = 6;
@@ -392,6 +421,7 @@ int	main(void)
 	ft_sort(ac, av);
 	return 0;
 }
+*/
 
 /*
 	----	appels de fonctions pour tests:		----

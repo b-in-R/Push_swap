@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/07 21:58:08 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/08 18:56:24 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -43,6 +43,8 @@ typedef struct s_list_ps
 
 // -- pour tests ---
 # include <stdio.h>
+# include <stdlib.h>
+
 #define PL() printf("-----\nfile: %s\nfunction: %s\nline: %d\n-----\n",\
 		 __FILE__, __func__, __LINE__);
 
@@ -52,8 +54,8 @@ void		print_lst_num(t_list_ps **lst);
 // -----------------
 
 
-void		ft_sort(int ac, char **av);
-void		ft_start(char **av, t_list_ps **list_a);
+void		ft_sort(int ac, char **av, int start);
+void		ft_start(char **av, t_list_ps **list_a, int start);
 int			check_double(t_list_ps *list_a);
 int			check_sort(t_list_ps *list_a);
 

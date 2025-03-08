@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:42:19 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/01 17:57:02 by raphael          ###   ########.fr       */
+/*   Updated: 2025/03/08 15:47:49 by raphael          ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -52,7 +52,7 @@ int	ft_nbr_bit(t_list_ps *list_a)
 	temp = 1;
 	while (list_a)
 	{
-		if (list_a->value > biggest)
+		if (list_a->num > biggest)
 			biggest = list_a->value;
 		list_a = list_a->next;
 	}
@@ -61,28 +61,16 @@ int	ft_nbr_bit(t_list_ps *list_a)
 		temp *= 2;
 		nbr_bit++;
 	}
-	PL();
+	//PL();
 	printf("nbr_bit: %i\n", nbr_bit);// pour test
 	return (nbr_bit);
 }
 
-t_list_ps	copy_list(t_list_ps **list_a)// , t_list_ps **copy // a voir, + voir si on retourne un pointeur?
-{
-	t_list_ps	*copy;
-
-	copy->value = (*list_a)->value;
-	while (&(*list_a)->value != NULL)// a voir mais sa semble complique tout ca
-	{
-		
-	}
-}
-
-
+// a voir avec complete.c
 void    ft_logic(t_list_ps **list_a)// a verif annotations etc
 {
 	t_list_ps	*list_b;
 	t_list_ps	**temp;
-	//t_list_ps	*copy; //peut etre pas besoin ici, return t_list_ps
 	int     	pos;
 	int			nbr_bit;
 	int	iteration = 1;// pour test iteration
@@ -91,9 +79,6 @@ void    ft_logic(t_list_ps **list_a)// a verif annotations etc
 	list_b = NULL;// voir si suppr
 	pos = 0;
 	nbr_bit = ft_nbr_bit(*list_a);
-	//copy = NULL;// a voir si suppr
-	//copy = copy_list(list_a, &copy);// directement copy_list (return t_list_ps)
-	copy_list(list_a);
 	while (pos <= nbr_bit)
 	{
 		print_list(list_a);// pour test
