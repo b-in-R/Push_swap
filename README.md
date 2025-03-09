@@ -70,3 +70,9 @@ appel: PL();
 					- separer les fichiers
 					- controler fonctions normi
 					- propre .h
+
+- 9.03	a faire:	- maj headers a 42
+					- check .h + makefile
+					- check norminette
+		
+		fait		- code ok

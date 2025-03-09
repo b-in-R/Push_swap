@@ -12,11 +12,15 @@
 
 #include "push_swap.h"
 
+#include <stdio.h>
+
 //////////////////////////////////////////////////////////////////////////////
 //																			//
 //////////////////////////////////////////////////////////////////////////////
 
 // ok
+
+
 void	ft_add_back(t_list_ps **lst, t_list_ps *new)
 {
 	t_list_ps	*tmp;
@@ -217,7 +221,7 @@ void    ft_logic(t_list_ps **list_a)
 			//printf("\n\noperations: %i\n\n", operations);// pour test
 			return ;
 		}
-		//			ft_printf("%s\n", operation);// emplacement a voir
+		//			printf("%s\n", operation);// emplacement a voir
 	}
 }
 
@@ -234,8 +238,7 @@ void	ft_start(char **av, t_list_ps **list_a, int start)
 	temp = 0;
 	while (av[i])
 	{
-		temp = (int)strtol(av[i++], NULL, 10);//testA
-		//testAtemp = ft_atoi(av[i++]);// chaque nombre en int
+		temp = ft_atoi(av[i++]);// chaque nombre en int
 		ft_add_back(list_a, ft_create(temp));
 	}
 //	print_list(list_a);// pour test
@@ -268,7 +271,6 @@ int	check_sort(t_list_ps *list_a)
 {
 	if (!list_a)
 	{
-//		printf("--- erreur !list_a ---\n");
 		return 0;
 	}
 	while (list_a->next != NULL)
@@ -382,7 +384,7 @@ void	ft_sort(int ac, char **av, int start)
 	if (check_double(list_a) == 0)// ici
 	{
 		printf("Error\n");//test
-		//ft_printf("Error\n");// ./libft/ft_printf.c/
+		//printf("Error\n");// ./libft/printf.c/
 		return ;
 	}
 	ft_copy_list(list_a, ac);
@@ -412,6 +414,125 @@ void	ft_sort(int ac, char **av, int start)
 		// envoyer chaque nombre dans list_a add_back --> ok
 	// retourne a push_swap.c -> main > fin
 }
+
+int	check_nbrs(char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if ((av[i][j] > 47 && av[i][j] < 58) || av[i][j] == '-')
+				j++;
+			else
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	n_args(char *str)
+{
+	int	i;
+	int	spaces;
+
+	i = 0;
+	spaces = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			spaces++;
+		i++;
+	}
+	spaces++;
+	return (spaces);
+}
+
+long long	atouille(const char *str)
+{
+	int	i;
+	long long	n;
+	long long	neg;
+
+	i = 0;
+	n = 0;
+	neg = 1;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			neg *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		n = (n * 10) + (str[i] - 48);
+		i++;
+	}
+	return (n * neg);
+}
+
+int	main(int ac, char **av)
+{
+	char			**str;
+	int				i;
+	long long		j;
+	int				new_ac;
+	
+	i = 0;
+	j = 0;
+	if ((ac <= 1 || check_nbrs(av) == 0) && ac != 2)
+	{
+		printf("Error\n");// ./libft/printf.c
+		return (0);
+	}
+	if (ac == 2)
+	{
+		str = ft_split(av[1], ' ');
+		new_ac = 0;
+		while (str[new_ac])
+			new_ac++;
+		if (check_nbrs(str) == 0)
+		{
+			printf("Error\n");
+			return (0);// voir return -1 sortie d'erreur?
+		}
+		while (str[i])
+		{
+			j = atouille(str[i]);
+			if (j > 2147483647 || j < -2147483648)
+			{
+				printf("Error\n");
+				return (0);
+			}
+			i++;
+		}
+		ft_sort(new_ac, str, 0);
+	}
+	else
+	{
+		while (av[i])
+		{
+			j = atouille(av[i]);
+			if (j > 2147483647 || j < -2147483648)
+			{
+				printf("Error\n");
+				return (0);
+			}
+			i++;
+		}	
+		ft_sort(ac, av, 1);
+	}
+	return (0);
+}
+
+
 /*
 int	main(void)
 {

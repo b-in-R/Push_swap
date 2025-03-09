@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// OK
 int	check_nbrs(char **av)
 {
 	int	i;
@@ -51,100 +50,7 @@ int	n_args(char *str)
 	return (spaces);
 }
 
-
-//--------------------------------------------------------
-
-int	count_word(const char *str, char sep)
-{
-	int	i;
-	int	cnt;
-
-	i = 0;
-	cnt = 0;
-	while (*str)
-	{
-		if (*str != sep && i == 0)
-		{
-			i = 1;
-			cnt++;
-		}
-		else if (*str == sep)
-			i = 0;
-		str++;
-	}
-	return (cnt);
-}
-
-static void	*ft_free(char **tab, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-	return (NULL);
-}
-
-static void	ft_initiate_vars(size_t *i, size_t *j, int *start_word )
-{
-	*i = 0;
-	*j = 0;
-	*start_word = -1;
-}
-
-static char	*putword(const char *str, int start, int end)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
-	if (!word)
-		return (0);
-	while (start < end)
-	{
-		word[i] = str[start];
-		i++;
-		start++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char		**tab;
-	size_t		i;
-	size_t		j;
-	int			start_word;
-
-	ft_initiate_vars(&i, &j, &start_word);
-	tab = ft_calloc((count_word(s, c) + 2), sizeof(char *));
-	if (!tab)
-		return (NULL);
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] != c && start_word < 0)
-			start_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && start_word >= 0)
-		{
-			tab[j] = putword(s, start_word, i);
-			if (!(tab[j]))
-				return (ft_free(tab, j));
-			start_word = -1;
-			j++;
-		}
-		i++;
-	}
-	return (tab);
-}
-//---------------------------------------------------------
-
-long long	ft_atouille(const char *str)
+long long	atouille(const char *str)
 {
 	int	i;
 	long long	n;
@@ -169,55 +75,54 @@ long long	ft_atouille(const char *str)
 	return (n * neg);
 }
 
-//---------------------------------------------------------
+void	checker(char **av)
+{
+	char		**str;
+	int			i;
+	int			new_ac;
+
+	i = 0;
+	str = ft_split(av[1], ' ');
+	new_ac = 0;
+	while (str[new_ac])
+		new_ac++;
+	if (check_nbrs(str) == 0)
+	{
+		write(2, "Error\n", 6);
+		return ;
+	}
+	while (str[i])
+	{
+		if (atouille(str[i]) > 2147483647 || atouille(str[i]) < -2147483648)
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
+		i++;
+	}
+	ft_sort(new_ac, str, 0);
+}
 
 int	main(int ac, char **av)
 {
-	char			**str;
 	int				i;
-	long long		j;
-	int				new_ac;
 	
 	i = 0;
-	j = 0;
-	if (ac <= 1 || check_nbrs(av) == 0 && ac != 2)
+	if ((ac <= 1 || check_nbrs(av) == 0) && ac != 2)
 	{
-		printf("Error\n");
-		//ft_printf("Error\n");// ./libft/ft_printf.c
-		return (0);
+		write(2, "Error\n", 6);
+		return (1);
 	}
 	if (ac == 2)
-	{
-		str = ft_split(av[1], ' ');
-		new_ac = 0;
-		while (str[new_ac])
-			new_ac++;
-		if (check_nbrs(str) == 0)
-		{
-			printf("Error\n");
-			return (0);
-		}
-		while (str[i])
-		{
-			j = ft_atouille(av[i]);
-			if (j > 2147483647 || j < -2147483647)
-			{
-				printf("Error int\n");
-				return (0);
-			}
-			i++;
-		}		
-		ft_sort(new_ac, str, 0);
-	}
+		checker(av);
 	else
 	{
 		while (av[i])
 		{
-			j = ft_atouille(av[i]);
-			if (j > 2147483647 || j < -2147483648)
+			if (atouille(av[i]) > 2147483647 || atouille(av[i]) < -2147483648)
 			{
-				printf("Error int\n");
-				return (0);
+				write(2, "Error\n", 6);
+				return (1);
 			}
 			i++;
 		}	
