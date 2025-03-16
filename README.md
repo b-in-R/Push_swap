@@ -80,5 +80,10 @@ appel: PL();
 
 - 16.03				- valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes ./shell
 
-					- voir probleme negatifs
-					
+					- ➜  push_swap git:(main) ✗ ARG="111-1 2 -3"; ./push_swap $ARG
+						 ARG = 	"111a111 -4 3"
+								"-"
+								"--123 1 321"
+								$(seq -250 249 | shuf | tr '\n' ' ')
+
+							-> Error

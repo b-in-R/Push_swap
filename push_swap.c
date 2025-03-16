@@ -100,12 +100,12 @@ void	checker(char **av)
 		}
 		i++;
 	}
-	ft_sort(new_ac, str, 0);
+	ft_sort(new_ac, str);
 }
 
 int	main(int ac, char **av)
 {
-	int				i;
+	int		i;
 	
 	i = 0;
 	if ((ac <= 1 || check_nbrs(av) == 0) && ac != 2)
@@ -113,20 +113,27 @@ int	main(int ac, char **av)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (ac == 2)
+	else if (ac == 2)
+	{
+		if (av[0][0] == '\0')
+		{
+			write(2, "Error\n", 6);
+			return (1);
+		}
 		checker(av);
+	}
 	else
 	{
 		while (av[i])
 		{
-			if (atouille(av[i]) > 2147483647 || atouille(av[i]) < -2147483648)
+			if (atouille(av[i]) > 2147483647 || atouille(av[i]) < -2147483648 || av[1][0] == '\0')
 			{
 				write(2, "Error\n", 6);
 				return (1);
 			}
 			i++;
 		}	
-		ft_sort(ac, av, 1);
+		ft_sort(ac, av);
 	}
 	return (0);
 }

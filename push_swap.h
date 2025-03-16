@@ -22,8 +22,8 @@ typedef struct s_list_ps
 	struct s_list_ps	*next;
 }						t_list_ps;
 
-void		ft_sort(int ac, char **av, int start);
-void		ft_start(char **av, t_list_ps **list_a, int start);
+void		ft_sort(int ac, char **av);
+void		ft_start(char **av, t_list_ps **list_a);
 int			check_double(t_list_ps *list_a);
 int			check_sort(t_list_ps *list_a);
 

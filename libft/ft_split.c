@@ -50,7 +50,7 @@ static void	*ft_free(char **tab, int count)
 static void	ft_initiate_vars(size_t *i, size_t *j, int *start_word )
 {
 	*i = 0;
-	*j = 0;
+	*j = 1;
 	*start_word = -1;
 }
 
@@ -60,9 +60,9 @@ static char	*putword(const char *str, int start, int end)
 	int		i;
 
 	i = 0;
-	word = malloc((end - start + 1) * sizeof(char));
+	word = malloc((end - start + 2) * sizeof(char));
 	if (!word)
-		return (0);
+		return (NULL);
 	while (start < end)
 	{
 		word[i] = str[start];
@@ -81,9 +81,10 @@ char	**ft_split(char const *s, char c)
 	int			start_word;
 
 	ft_initiate_vars(&i, &j, &start_word);
-	tab = ft_calloc((count_word(s, c) + 1), sizeof(char *));
+	tab = ft_calloc((count_word(s, c) + 2), sizeof(char *));
 	if (!tab)
 		return (NULL);
+	tab[0] = ft_strdup("a.out");
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && start_word < 0)
@@ -101,21 +102,24 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 /*
-int	main(void)
+#include <stdio.h>
+int	main(int ac, char **av)
 {
-	const char	s[] = "petit test sur ce texte";
 	char		c = ' ';
 	char		**res;
 	int			i = 0;
 	int			j = 0;
 
-	res = ft_split(s, c);
+	if (ac != 2)
+		return 0;
+
+	res = ft_split(av[1], c);
 	while (res[i])
 	{
-		printf("%s\n", res[i]);
+		printf("s[%i] -->\t%s\n", i, res[i]);
 		i++;
 	}
-	free(res);
+	ft_free(res, i);
 	return 0;
 }
 */

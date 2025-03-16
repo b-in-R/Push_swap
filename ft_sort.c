@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-void	ft_start(char **av, t_list_ps **list_a, int start)
+void	ft_start(char **av, t_list_ps **list_a)
 {
 	int	i;
 	int	temp;
 
-	i = start;
+	i = 1;
 	temp = 0;
 	while (av[i])
 	{
@@ -57,12 +57,12 @@ int	check_sort(t_list_ps *list_a)
 	return (1);
 }
 
-void	ft_sort(int ac, char **av, int start)
+void	ft_sort(int ac, char **av)
 {
 	t_list_ps	*list_a;
 
 	list_a = NULL;
-	ft_start(av, &list_a, start);
+	ft_start(av, &list_a);
 	if (check_double(list_a) == 0)
 	{
 		write(2, "Error\n", 6);
