@@ -76,3 +76,9 @@ appel: PL();
 					- check norminette
 		
 		fait		- code ok
+
+
+- 16.03				- valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes ./shell
+
+					- voir probleme negatifs
+					
