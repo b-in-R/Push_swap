@@ -87,3 +87,6 @@ appel: PL();
 								$(seq -250 249 | shuf | tr '\n' ' ')
 
 							-> Error
+
+17.03				- voir "400-400" -> error
+					- voir <= 500 arg  -> https://github.com/gemartin99/Push-Swap-Tester

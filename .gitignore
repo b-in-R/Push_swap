@@ -1,5 +1,6 @@
 a.out
 /delete
 *.a
+*.o
 /Push-Swap-Tester
 Push-Swap-Tester

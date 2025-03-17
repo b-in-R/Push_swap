@@ -106,27 +106,21 @@ void	checker(char **av)
 int	main(int ac, char **av)
 {
 	int		i;
-	
+
 	i = 0;
-	if ((ac <= 1 || check_nbrs(av) == 0) && ac != 2)
+	if ((ac != 2 && (ac < 2 || check_nbrs(av) == 0 || av[1] == NULL || av[1][0]
+			== '\0')) || ((ac == 2 && (av[1] == NULL || av[1][0] == '\0'))))
 	{
 		write(2, "Error\n", 6);
 		return (1);
 	}
 	else if (ac == 2)
-	{
-		if (av[0][0] == '\0')
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
 		checker(av);
-	}
 	else
 	{
 		while (av[i])
 		{
-			if (atouille(av[i]) > 2147483647 || atouille(av[i]) < -2147483648 || av[1][0] == '\0')
+			if (atouille(av[i]) > 2147483647 || atouille(av[i]) < -2147483648)
 			{
 				write(2, "Error\n", 6);
 				return (1);
@@ -137,3 +131,10 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
+
+	/*if ((ac == 2 && (av[1] == NULL || av[1][0] == '\0')) || (ac != 2 &&
+		(av[1] == NULL || av[1][0] == '\0')))
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}*/
