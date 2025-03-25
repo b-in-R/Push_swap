@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_write.c                                  :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 13:01:44 by rabiner           #+#    #+#             */
-/*   Updated: 2025/02/11 13:01:45 by rabiner          ###   ########.fr       */
+/*   Created: 2024/10/01 15:51:57 by rabiner           #+#    #+#             */
+/*   Updated: 2024/10/02 16:14:20 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "libft.h"
 
-int	ft_putchar(char c)
+int	ft_isdigit(int c)
 {
-	return (write(1, &c, 1));
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
-
-int	ft_putstr(char *str)
+/*
+int	main(void)
 {
-	int	nb;
+	char	c = 'a';
 
-	nb = 0;
-	if (str == NULL)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	while (*str)
-	{
-		ft_putchar((int)*str);
-		nb++;
-		str++;
-	}
-	return (nb);
+	printf("%c, v: %i, t: %i\n", c, isdigit(c), ft_isdigit(c));
+	return 0;
 }
+*/

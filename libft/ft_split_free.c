@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 17:49:15 by rabiner           #+#    #+#             */
-/*   Updated: 2024/10/28 17:49:18 by rabiner          ###   ########.fr       */
+/*   Created: 2025/03/25 15:51:57 by rabiner           #+#    #+#             */
+/*   Updated: 2025/03/25 16:14:20 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_split_free(char **tab)
 {
-	char	*res;
-	int		i;
+	int	i;
 
+	if (!tab)
+		return ;
 	i = 0;
-	res = ft_calloc(ft_strlen(s1) + 1, sizeof(const char));
-	if (!res)
-		return (NULL);
-	while (s1[i])
+	while (tab[i])
 	{
-		res[i] = s1[i];
+		free(tab[i]);
 		i++;
 	}
-	return (res);
+	free(tab);
 }
-/*
-int	main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		printf("1 string pls\n");
-		return 0;
-	}
-	printf("base: %s\ncopy: %s\n", av[1], ft_strdup(av[1]));
-	printf("check base: %s\n", av[1]);// mettre +1 ligne 26
-	return 0;
-}
-*/

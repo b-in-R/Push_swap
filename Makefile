@@ -16,7 +16,7 @@ CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS =	push_swap.c  ft_sort.c ft_logic.c ft_node.c ft_copy_list.c
+SRCS =	$(wildcard *.c)
 
 OBJS = $(SRCS:.c=.o)
 
