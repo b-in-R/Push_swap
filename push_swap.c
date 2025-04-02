@@ -12,11 +12,10 @@
 
 #include "push_swap.h"
 
-
-int	exit_error(char **str, int need_free)
+int	exit_error(char **str, t_list_ps *lst)
 {
-	if (need_free)
-		ft_split_free(str);
+	ft_free_str(str);
+	ft_free_lst(lst);
 	write(2, "Error\n", 6);
 	return (1);
 }
@@ -71,7 +70,7 @@ int	check_min_max_value(const char *str)
 	return (0);
 }
 
-int	check_errors(char **str, int free_split)
+int	check_errors(char **str)
 {
 	int	i;
 	int	j;
@@ -84,15 +83,15 @@ int	check_errors(char **str, int free_split)
 		{
 			if ((ft_isdigit(str[i][j]) == 0 && str[i][j] != '-' &&
 					str[i][j] != '+') || str[i][0] == '\0')
-				return (exit_error(str, free_split));
+				return (exit_error(str, NULL));
 			j++;
 		}
 		if (check_min_max_value(str[i]))
-			return (exit_error(str, free_split));
+			return (exit_error(str, NULL));
 		i++;
 	}
 	if (check_sign_error(str))
-		return (exit_error(str, free_split));
+		return (exit_error(str, NULL));
 	return (0);
 }
 
@@ -103,21 +102,19 @@ int	main(int ac, char **av)
 
 	free_split = 0;
 	if (ac < 2)
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (exit_error(NULL, NULL));
 	if (ac == 2)
 	{
-		free_split++;
+		free_split = 1;
 		str = ft_split(av[1], ' ');
 	}
 	else
 		str = av + 1;
-	if (check_errors(str, free_split))
-		return (exit_error(str, free_split));
-	ft_first_sort(str);
-	if (free_split)
-		ft_split_free(str);
+	if (check_errors(str))
+		return (exit_error(str, NULL));
+	if (ft_sort(str))
+		return (1);
+	if (free_split == 1)
+		ft_free_str(str);
 	return (0);
 }

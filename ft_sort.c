@@ -1,24 +1,127 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_sort.c                                       :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: rabiner  <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 15:51:57 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/25 16:14:20 by rabiner          ###   ########.fr       */
+/*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
+/*   Updated: 2025/03/08 18:56:24 by raphael          ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
+int	check_double(t_list_ps *list_a)
+{
+	t_list_ps	*temp;
+	t_list_ps	*check;
 
+	check = list_a;
+	while (check)
+	{
+		temp = check->next;
+		while (temp)
+		{
+			if (check->value == temp->value)
+				return (1);
+			temp = temp->next;
+		}
+		check = check->next;
+	}
+	return (0);
+}
 
+void	index(t_list_ps *list_a, t_list_ps *copy)
+{
+	t_list_ps	*temp;
+	int			i;
 
-// met toutes les valeurs dans la liste chainee
-// a voir encore controle des duplicatats
+	i = 0;
+	while (copy)
+	{
+		temp = list_a;
+		while (temp)
+		{
+			if (temp->value == copy->value)
+			{
+				temp->index = i++;
+				break;
+			}
+			temp = temp->next;
+		}
+		copy = copy->next;
+	}
+}
 
-void	ft_sort(char **str)
+void	first_sort(t_list_ps *list_a)
+{
+	t_list_ps	*copy;
+	t_list_ps	*curr;
+	t_list_ps	*next;
+	int			tmp;
+
+	ft_copy_list(list_a, &copy);
+	curr = copy;
+	while (curr)
+	{
+		next = curr->next;
+		while (next)
+		{
+			if (curr->value > next->value)
+			{
+				tmp = curr->value;
+				curr->value = next->value;
+				next->value = tmp;
+			}
+			next = next->next;
+		}
+		curr = curr->next;
+	}
+	index(list_a, copy);
+	ft_free_list(copy);
+}
+
+int	ft_check_sort(t_list_ps *list_a)
+{
+	while (list_a && list_a->next)
+	{
+		if (list_a->value > list_a->next->value)
+		{
+			return (0);
+		}
+		list_a = list_a->next;
+	}
+	return (1);
+}
+
+int	ft_sort(char **str)
 {
 	t_list_ps	*list_a;
+	t_list_ps	*list_copy;
+	char		*result;
+	int			i;
+
+	list_a = NULL;
+	start_list(str, &list_a);
+	if (check_double(list_a) == 1)
+		return (exit_error(str, list_a));
+	result = ft_calloc(lst_len(list_a) * 3 + 1, sizeof(char));
+	if (!result)
+		return (1);
+	first_sort(list_a);
+	while (check_sort(list_a) != 1)
+	{
+		i = 0;
+		ft_copy_list(list_a, &list_copy);
+		ft_logic(&list_a, result, &i, lst_len(list_a));
+		if (ft_check_copy(list_a, list_copy))
+			i = 0;
+		else
+			ft_printf(result);
+		ft_free_list(list_copy);
+	}
+	free(result);
+	ft_free_list(list_a);
+	return (0);
 }
