@@ -1,25 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <marvin@42lausanne.ch>             +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 15:51:57 by rabiner           #+#    #+#             */
-/*   Updated: 2025/03/25 16:14:20 by rabiner          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	exit_error(char **str, t_list_ps *lst)
+int	ft_exit_error(char **str, t_list_ps *lst, int free_s, int free_l)
 {
-	ft_free_str(str);
-	ft_free_lst(lst);
+	if (free_s == 1)
+		ft_free_str(str);
+	if (free_l == 1)
+		ft_free_list(lst);
 	write(2, "Error\n", 6);
 	return (1);
 }
-
 
 int	check_sign_error(char **str)
 {
@@ -47,7 +37,7 @@ int	check_sign_error(char **str)
 
 int	check_min_max_value(const char *str)
 {
-	int	i;
+	int			i;
 	long long	n;
 	long long	neg;
 
@@ -70,7 +60,7 @@ int	check_min_max_value(const char *str)
 	return (0);
 }
 
-int	check_errors(char **str)
+int	check_errors(char **str, int free_split)
 {
 	int	i;
 	int	j;
@@ -83,15 +73,15 @@ int	check_errors(char **str)
 		{
 			if ((ft_isdigit(str[i][j]) == 0 && str[i][j] != '-' &&
 					str[i][j] != '+') || str[i][0] == '\0')
-				return (exit_error(str, NULL));
+				return (ft_exit_error(str, NULL, free_split, 0));
 			j++;
 		}
 		if (check_min_max_value(str[i]))
-			return (exit_error(str, NULL));
+			return (ft_exit_error(str, NULL, free_split, 0));
 		i++;
 	}
 	if (check_sign_error(str))
-		return (exit_error(str, NULL));
+		return (ft_exit_error(str, NULL, free_split, 0));
 	return (0);
 }
 
@@ -102,7 +92,7 @@ int	main(int ac, char **av)
 
 	free_split = 0;
 	if (ac < 2)
-		return (exit_error(NULL, NULL));
+		return (ft_exit_error(NULL, NULL, 0, 0));
 	if (ac == 2)
 	{
 		free_split = 1;
@@ -110,9 +100,9 @@ int	main(int ac, char **av)
 	}
 	else
 		str = av + 1;
-	if (check_errors(str))
-		return (exit_error(str, NULL));
-	if (ft_sort(str))
+	if (check_errors(str, free_split))
+		return (ft_exit_error(str, NULL, free_split, 0));
+	if (ft_sort(str, free_split))
 		return (1);
 	if (free_split == 1)
 		ft_free_str(str);

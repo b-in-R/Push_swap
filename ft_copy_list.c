@@ -11,8 +11,8 @@ void	ft_copy_list(t_list_ps *list_a, t_list_ps **list_copy)
 		newnode = ft_create(list_a->value);
 		if (!newnode)
 		{
-			ft_free_list((list_copy));
-			return;
+			ft_free_list((*list_copy));
+			return ;
 		}
 		newnode->index = list_a->index;
 		ft_add_back(list_copy, newnode);
@@ -32,4 +32,17 @@ int	ft_check_copy(t_list_ps *list_a, t_list_ps *list_copy)
 		list_copy = list_copy->next;
 	}
 	return (1);
+}
+
+void	ft_preprint(char *str, char *to_add, int *i)
+{
+	int	iter;
+
+	iter = 0;
+	while (to_add[iter])
+	{
+		str[*i] = to_add[iter];
+		(*i)++;
+		iter++;
+	}
 }

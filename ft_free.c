@@ -6,7 +6,7 @@ void	ft_free_list(t_list_ps *lst)
 	t_list_ps	*tmp;
 
 	if (!lst)
-		return;
+		return ;
 	while (lst)
 	{
 		tmp = lst;
@@ -21,7 +21,7 @@ void	ft_free_str(char **str)
 
 	i = 0;
 	if (!str)
-		return;
+		return ;
 	while (str[i])
 	{
 		free(str[i]);

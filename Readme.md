@@ -11,3 +11,14 @@
 								controle et tests 
 					
 		controler:	sort.c:		check_sort
+
+
+3.04
+		a faire:	voir pourquoi double free quand  5~6 + d'arg
+
+					controle free etc
+					controle logique base
+					controle avec push_swap_tester
+
+					del /push_swap/libft.h
+					del /push_swap/complete.c quand ok

@@ -1,14 +1,3 @@
-/******************************************************************************/
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_node.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/11 22:49:00 by by rabiner        #+#    #+#             */
-/*   Updated: 2025/03/07 19:31:30 by raphael          ###   ########.fr       */
-/*                                                                            */
-/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -50,21 +39,6 @@ void	ft_add_back(t_list_ps **lst, t_list_ps *new)
 	return ;
 }
 
-void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
-{
-	t_list_ps	*node;
-
-	if (!src || !*src || !dest)
-		return ;
-	node = *src;
-	*src = node->next;
-	node->next = NULL;
-	if (front == 1)
-		ft_add_front(dest, node);
-	else
-		ft_add_back(dest, node);
-}
-
 void	ft_start_list(char **str, t_list_ps **list_a)
 {
 	t_list_ps	*newnode;
@@ -80,7 +54,7 @@ void	ft_start_list(char **str, t_list_ps **list_a)
 		if (!newnode)
 		{
 			ft_free_list(*list_a);
-			return;
+			return ;
 		}
 		ft_add_back(list_a, newnode);
 	}

@@ -1,14 +1,3 @@
-/******************************************************************************/
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rabiner  <marvin@42lausanne.ch>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 12:24:25 by raphael           #+#    #+#             */
-/*   Updated: 2025/03/08 18:56:24 by raphael          ###   ########.fr       */
-/*                                                                            */
-/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -32,7 +21,7 @@ int	check_double(t_list_ps *list_a)
 	return (0);
 }
 
-void	index(t_list_ps *list_a, t_list_ps *copy)
+void	ft_index(t_list_ps *list_a, t_list_ps *copy)
 {
 	t_list_ps	*temp;
 	int			i;
@@ -46,7 +35,7 @@ void	index(t_list_ps *list_a, t_list_ps *copy)
 			if (temp->value == copy->value)
 			{
 				temp->index = i++;
-				break;
+				break ;
 			}
 			temp = temp->next;
 		}
@@ -78,11 +67,11 @@ void	first_sort(t_list_ps *list_a)
 		}
 		curr = curr->next;
 	}
-	index(list_a, copy);
+	ft_index(list_a, copy);
 	ft_free_list(copy);
 }
 
-int	ft_check_sort(t_list_ps *list_a)
+int	check_sort(t_list_ps *list_a)
 {
 	while (list_a && list_a->next)
 	{
@@ -95,30 +84,28 @@ int	ft_check_sort(t_list_ps *list_a)
 	return (1);
 }
 
-int	ft_sort(char **str)
+int	ft_sort(char **str, int free_split)
 {
 	t_list_ps	*list_a;
 	t_list_ps	*list_copy;
+	t_logic		val;
 	char		*result;
-	int			i;
 
 	list_a = NULL;
-	start_list(str, &list_a);
+	ft_start_list(str, &list_a);
 	if (check_double(list_a) == 1)
-		return (exit_error(str, list_a));
-	result = ft_calloc(lst_len(list_a) * 3 + 1, sizeof(char));
+		return (ft_exit_error(str, list_a, free_split, 1));
+	result = ft_calloc(ft_lst_len(list_a) * 3 + 1, sizeof(char));
 	if (!result)
 		return (1);
 	first_sort(list_a);
 	while (check_sort(list_a) != 1)
 	{
-		i = 0;
 		ft_copy_list(list_a, &list_copy);
-		ft_logic(&list_a, result, &i, lst_len(list_a));
-		if (ft_check_copy(list_a, list_copy))
-			i = 0;
-		else
+		list_a = ft_logic(&list_a, result, &val, ft_lst_len(list_a));
+		if (!ft_check_copy(list_a, list_copy))
 			ft_printf(result);
+		val.i = 0;
 		ft_free_list(list_copy);
 	}
 	free(result);
