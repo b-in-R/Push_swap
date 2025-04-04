@@ -26,6 +26,7 @@ void		ft_free_str(char **str);
 
 //ft_sort.c
 int			ft_sort(char **str, int free_split);
+int			ft_check_sort(t_list_ps *list_a);
 
 //ft_node.c
 void		ft_start_list(char **str, t_list_ps **list_a);
@@ -39,7 +40,8 @@ int			ft_check_copy(t_list_ps *list_a, t_list_ps *list_copy);
 void		ft_copy_list(t_list_ps *list_a, t_list_ps **list_copy);
 
 //ft_logic.c
-t_list_ps	*ft_logic(t_list_ps **list_a, char *result, t_logic *val, int len);
+t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val, int len);
+//t_list_ps	*ft_logic(t_list_ps **list_a, /*char *result, */t_logic *val, int len);
 int	ft_lst_len(t_list_ps *lst);
 
 #endif

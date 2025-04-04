@@ -14,11 +14,24 @@
 
 
 3.04
-		a faire:	voir pourquoi double free quand  5~6 + d'arg
+		a faire:	ok - voir pourquoi double free quand  5~6 + d'arg
 
 					controle free etc
-					controle logique base
+					ok - controle logique base
 					controle avec push_swap_tester
 
-					del /push_swap/libft.h
+					ok - del /push_swap/libft.h
 					del /push_swap/complete.c quand ok
+
+4.04	a faire:	ok - double free avec av "234 654 123 657 24 431" == 3 4 2 1 0
+
+					ft_logic 25l ->	voir si quand ft_swap, toujours preprint?
+									voir logic_bis de "while (j<len)"  a 
+									"while (list_b)"
+
+					controle avec pushSwapTester
+
+
+
+CONTROLE FINAL:		- makefile: NAME "push_swap" et flag -g
+					

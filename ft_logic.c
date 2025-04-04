@@ -67,15 +67,20 @@ void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
 	}
 }
 
-t_list_ps	*ft_logic(t_list_ps **list_a, char *result, t_logic *val, int len)
+t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val, int len)
 {
 	t_list_ps	*list_b;
+	t_list_ps	*list_copy;
+	char		*result;
 	int			j;
 
 	list_b = NULL;
 	val->pos = 0;
-	while (val->pos < nbr_bits(*list_a))
+	result = ft_calloc(len * 3 * 2 + 1, sizeof(char));
+	while (val->pos < nbr_bits(*list_a) && ft_check_sort(*list_a) != 1)
 	{
+		val->i = 0;
+		ft_copy_list(*list_a, &list_copy);
 		val->i = 0;
 		j = 0;
 		while (j < len)
@@ -88,8 +93,12 @@ t_list_ps	*ft_logic(t_list_ps **list_a, char *result, t_logic *val, int len)
 			ft_preprint(result, "pa\n", &val->i);
 			ft_swap(&list_b, list_a, 1);
 		}
+		if (!ft_check_copy(*list_a, list_copy))
+			ft_printf(result);
+		ft_free_list(list_copy);
 		val->pos++;
 	}
+	free(result);
 	return (*list_a);
 }
 

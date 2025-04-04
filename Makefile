@@ -1,11 +1,12 @@
 
-NAME = push_swap
+NAME = debug
 
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 
-SRCS =	$(wildcard *.c)
+SRCS =	push_swap.c ft_sort.c ft_logic.c \
+		ft_copy_list.c ft_free.c ft_node.c
 
 OBJS = $(SRCS:.c=.o)
 
