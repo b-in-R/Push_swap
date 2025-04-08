@@ -60,7 +60,7 @@ int	check_min_max_value(const char *str)
 	return (0);
 }
 
-int	check_errors(char **str, int free_split)
+int	check_errors(char **str)
 {
 	int	i;
 	int	j;
@@ -73,15 +73,15 @@ int	check_errors(char **str, int free_split)
 		{
 			if ((ft_isdigit(str[i][j]) == 0 && str[i][j] != '-' &&
 					str[i][j] != '+') || str[i][0] == '\0')
-				return (ft_exit_error(str, NULL, free_split, 0));
+				return (1);
 			j++;
 		}
 		if (check_min_max_value(str[i]))
-			return (ft_exit_error(str, NULL, free_split, 0));
+			return (1);
 		i++;
 	}
 	if (check_sign_error(str))
-		return (ft_exit_error(str, NULL, free_split, 0));
+		return (1);
 	return (0);
 }
 
@@ -100,10 +100,10 @@ int	main(int ac, char **av)
 	}
 	else
 		str = av + 1;
-	if (check_errors(str, free_split))
+	if (check_errors(str))
 		return (ft_exit_error(str, NULL, free_split, 0));
-	if (ft_sort(str, free_split))
-		return (1);
+	if (ft_sort(str))
+		return (ft_exit_error(str, NULL, free_split, 0));
 	if (free_split == 1)
 		ft_free_str(str);
 	return (0);

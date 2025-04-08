@@ -53,6 +53,56 @@ void	ft_swap(t_list_ps **src, t_list_ps **dest, int front)
 }
 
 void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
+	t_logic *val)
+{
+	while (val->j < val->len)
+	{
+		if (((*list_a)->index >> val->pos & 1) == 0)
+		{
+			ft_preprint(result, "pb\n", &val->i);
+			ft_swap(list_a, list_b, 1);
+		}
+		else
+		{
+			ft_preprint(result, "ra\n", &val->i);
+			ft_swap(list_a, list_a, 0);
+		}
+		val->j++;
+	}
+	while (*list_b)
+	{
+		ft_preprint(result, "pa\n", &val->i);
+		ft_swap(list_b, list_a, 1);
+	}
+}
+
+t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val)
+{
+	t_list_ps	*list_b;
+	t_list_ps	*list_copy;
+	char		*result;
+
+	list_b = NULL;
+	val->pos = 0;
+	result = ft_calloc(val->len * 3 * 2 + 1, sizeof(char));
+	while (val->pos < nbr_bits(*list_a) && ft_check_sort(*list_a) != 1)
+	{
+		val->i = 0;
+		ft_copy_list(*list_a, &list_copy);
+		val->i = 0;
+		val->j = 0;
+		logic_bis(list_a, &list_b, result, val);
+		if (!ft_check_copy(*list_a, list_copy))
+			ft_printf(result);
+		ft_free_list(list_copy);
+		val->pos++;
+	}
+	free(result);
+	return (*list_a);
+}
+
+/*
+void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
 			t_logic *val)
 {
 	if (((*list_a)->index >> val->pos & 1) == 0)
@@ -67,7 +117,7 @@ void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
 	}
 }
 
-t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val, int len)
+t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val)
 {
 	t_list_ps	*list_b;
 	t_list_ps	*list_copy;
@@ -76,14 +126,14 @@ t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val, int len)
 
 	list_b = NULL;
 	val->pos = 0;
-	result = ft_calloc(len * 3 * 2 + 1, sizeof(char));
+	result = ft_calloc(val->len * 3 * 2 + 1, sizeof(char));
 	while (val->pos < nbr_bits(*list_a) && ft_check_sort(*list_a) != 1)
 	{
 		val->i = 0;
 		ft_copy_list(*list_a, &list_copy);
 		val->i = 0;
 		j = 0;
-		while (j < len)
+		while (j < val->len)
 		{
 			logic_bis(list_a, &list_b, result, val);
 			j++;
@@ -99,43 +149,6 @@ t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val, int len)
 		val->pos++;
 	}
 	free(result);
-	return (*list_a);
-}
-
-/*
-t_list_ps	*ft_logic(t_list_ps **list_a, char *result, int *i, int len)
-{
-	t_list_ps	*list_b;
-	int			pos;
-	int			j;
-
-	list_b = NULL;
-	pos = 0;
-	while (pos < nbr_bits(*list_a))
-	{
-		*i = 0;
-		j = 0;
-		while (j < len)
-		{
-			if (((*list_a)->index >> pos & 1) == 0)
-			{
-				ft_preprint(result, "pb\n", i);
-				ft_swap(list_a, &list_b, 1);
-			}
-			else
-			{
-				ft_preprint(result, "ra\n", i);
-				ft_swap(list_a, list_a, 0);
-			}
-			j++;
-		}
-		while (list_b)
-		{
-			ft_preprint(result, "pa\n", i);
-			ft_swap(&list_b, list_a, 1);
-		}
-		pos++;
-	}
 	return (*list_a);
 }
 */

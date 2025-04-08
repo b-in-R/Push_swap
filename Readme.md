@@ -25,9 +25,10 @@
 
 4.04	a faire:	ok - double free avec av "234 654 123 657 24 431" == 3 4 2 1 0
 
-					ft_logic 25l ->	voir si quand ft_swap, toujours preprint?
-									voir logic_bis de "while (j<len)"  a 
-									"while (list_b)"
+					ok - ft_logic 25l ->	voir si quand ft_swap, toujours
+											preprint?
+											voir logic_bis de "while (j<len)"  a 
+											"while (list_b)"
 
 					controle avec pushSwapTester
 

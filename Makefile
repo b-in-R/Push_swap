@@ -1,9 +1,9 @@
 
-NAME = debug
+NAME = push_swap
 
 CC = cc
 RM = rm -f
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS =	push_swap.c ft_sort.c ft_logic.c \
 		ft_copy_list.c ft_free.c ft_node.c
