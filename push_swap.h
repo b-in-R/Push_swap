@@ -45,4 +45,7 @@ void		ft_copy_list(t_list_ps *list_a, t_list_ps **list_copy);
 t_list_ps	*ft_logic(t_list_ps **list_a, t_logic *val);
 int			ft_lst_len(t_list_ps *lst);
 
+//ft_logic_less_6.c
+t_list_ps	*ft_logic_less_6(t_list_ps **list_a, t_logic *val);
+
 #endif

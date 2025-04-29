@@ -97,7 +97,10 @@ int	ft_sort(char **str)
 	while (ft_check_sort(list_a) != 1)
 	{
 		val.len = ft_lst_len(list_a);
-		list_a = ft_logic(&list_a, &val);
+		if (val.len <= 5)
+			list_a = ft_logic_less_6(&list_a, &val);
+		else
+			list_a = ft_logic(&list_a, &val);
 	}
 	ft_free_list(list_a);
 	return (0);

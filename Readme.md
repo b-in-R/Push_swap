@@ -36,3 +36,10 @@
 
 CONTROLE FINAL:		- makefile: NAME "push_swap" et flag -g
 					
+
+29.04
+
+		a faire:	- tri si < 6 arg (ft_logic_less_6.c)
+							- voir si	return(t_list_ps)?
+							- coder swap_a (voir si necessaire rra)
+
