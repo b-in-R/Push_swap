@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:04:25 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:04:26 by binr             ###   ########.fr       */
+/*   Updated: 2025/04/30 23:02:50 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
 {
 	while (val->j < val->len)
 	{
-		if (((*list_a)->index >> val->pos & 1) == 0)
+		if (((*list_a)->index >> val->pos & 1) == 0)// ici == 1
 		{
 			ft_preprint(result, "pb\n", &val->i);
 			ft_push(list_a, list_b, 1);
@@ -61,7 +61,7 @@ void	logic_bis(t_list_ps **list_a, t_list_ps **list_b, char *result,
 		else
 		{
 			ft_preprint(result, "ra\n", &val->i);
-			ft_push(list_a, list_a, 0);
+			ft_rotate(list_a, 0);
 		}
 		val->j++;
 	}

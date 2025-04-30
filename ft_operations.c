@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:44:00 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:03:36 by binr             ###   ########.fr       */
+/*   Updated: 2025/04/30 22:26:44 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_swap(t_list_ps **lst, int print_a_b)
 }
 
 // 1st node become last
-void	ft_rotate(t_list_ps **lst)
+void	ft_rotate(t_list_ps **lst, int print_a)
 {
 	t_list_ps	*first;
 	t_list_ps	*last;
@@ -62,7 +62,8 @@ void	ft_rotate(t_list_ps **lst)
 	(*lst) = (*lst)->next;
 	first->next = NULL;
 	last->next = first;
-	ft_printf("ra\n");
+	if (print_a == 1)
+		ft_printf("ra\n");
 }
 
 // last node become 1st

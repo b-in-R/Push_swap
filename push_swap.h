@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:33:54 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 21:37:13 by binr             ###   ########.fr       */
+/*   Updated: 2025/04/30 22:28:20 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			ft_lst_len(t_list_ps *lst);
 //ft_oprations.c
 void		ft_push(t_list_ps **src, t_list_ps **dest, int front);
 void		ft_swap(t_list_ps **lst, int print_a_b);
-void		ft_rotate(t_list_ps **lst);
+void		ft_rotate(t_list_ps **lst, int print_a);
 void		ft_r_rotate(t_list_ps **lst);
 
 //ft_logic_less_6.c

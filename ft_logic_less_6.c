@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:43:29 by rabiner           #+#    #+#             */
-/*   Updated: 2025/04/30 22:04:07 by binr             ###   ########.fr       */
+/*   Updated: 2025/04/30 22:27:11 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	push_a_by_index(t_list_ps **list_a, t_list_ps **list_b)
 	{
 		ft_push(list_b, list_a, 1);
 		ft_printf("pa\n");
-		ft_rotate(list_a);
+		ft_rotate(list_a, 1);
 	}
 }
 
@@ -50,7 +50,7 @@ void	sort_three(t_list_ps **lst, int a_index, int b_index, int c_index)
 		if (a_index < c_index)
 			ft_swap(lst, 1);
 		else if (b_index < c_index)
-			ft_rotate(lst);
+			ft_rotate(lst, 1);
 		else
 		{
 			ft_swap(lst, 1);
