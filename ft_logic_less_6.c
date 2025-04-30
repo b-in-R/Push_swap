@@ -3,47 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   ft_logic_less_6.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabiner <rabiner@student.42.fr>            +#+  +:+       +#+        */
+/*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:43:29 by rabiner           #+#    #+#             */
-/*   Updated: 2025/04/29 15:53:43 by rabiner          ###   ########.fr       */
+/*   Updated: 2025/04/30 22:04:07 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
+#include "push_swap.h"
 
-t_list_ps	*ft_logic_less_6(t_list_ps **list_a, t_logic *val)
+void	push_a_by_index(t_list_ps **list_a, t_list_ps **list_b)
 {
-	t_list_ps 	*head;
-	t_list_ps	*temp;
-
-	head = *list_a;
-	temp = (*list_a)->next;
-	if (val->len == 2)
+	if ((*list_b)->index == 0)
 	{
-		while (ft_check_sort(*list_a) != 1)
-		{
-			ft_swap(list_a, list_a, 0);
-			ft_printf("ra\n");
-		}
-		return (*list_a);
+		ft_push(list_b, list_a, 1);
+		ft_printf("pa\n");
 	}
-	if (val->len == 3)
+	else if ((*list_b)->index == 1)
+		sort_index_one(list_a, list_b);
+	else if ((*list_b)->index == 2)
+		sort_index_two(list_a, list_b);
+	else if ((*list_b)->index == 3)
+		sort_index_three(list_a, list_b);
+	else if ((*list_b)->index == 4)
 	{
-		while (ft_check_sort(*list_a) != 1 && temp)
+		ft_push(list_b, list_a, 1);
+		ft_printf("pa\n");
+		ft_rotate(list_a);
+	}
+}
+
+void	sort_three(t_list_ps **lst, int a_index, int b_index, int c_index)
+{
+	if (a_index < b_index)
+	{
+		if (a_index > c_index)
+			ft_r_rotate(lst);
+		else if (b_index > c_index)
 		{
-			temp = (*list_a)->next;
-			if ((*list_a)->value > (*list_a)->next->value)
-			{
-				ft_swap()
-			}
+			ft_r_rotate(lst);
+			ft_swap(lst, 1);
 		}
 	}
 	else
 	{
-		while (ft_check_sort(*list_a) != 1)
+		if (a_index < c_index)
+			ft_swap(lst, 1);
+		else if (b_index < c_index)
+			ft_rotate(lst);
+		else
 		{
-			
+			ft_swap(lst, 1);
+			ft_r_rotate(lst);
 		}
+	}
+}
+
+void	tinysort(t_list_ps **lst)
+{
+	t_list_ps	*a;
+	t_list_ps	*b;
+	t_list_ps	*c;
+
+	if (ft_check_sort(*lst))
+		return ;
+	a = *lst;
+	b = a->next;
+	c = b->next;
+	sort_three(lst, a->index, b->index, c->index);
+}
+
+void	sort_five(t_list_ps **lst, t_logic *val)
+{
+	t_list_ps	*list_a;
+	t_list_ps	*list_b;
+
+	list_a = *lst;
+	list_b = NULL;
+	ft_push(&list_a, &list_b, 1);
+	ft_printf("pb\n");
+	if (val->len == 5)
+	{
+		ft_push(&list_a, &list_b, 1);
+		ft_printf("pb\n");
+		if (!ft_check_sort(list_b))
+			ft_swap(&list_b, 2);
+	}
+	tinysort(&list_a);
+	while (list_b)
+		push_a_by_index(&list_a, &list_b);
+	*lst = list_a;
+}
+
+t_list_ps	*ft_logic_less_6(t_list_ps **list_a, t_logic *val)
+{
+	if (val->len == 2)
+	{
+		ft_swap(list_a, 1);
+		return (*list_a);
+	}
+	if (val->len == 3)
+	{
+		tinysort(list_a);
+		return (*list_a);
+	}
+	else
+	{
+		sort_five(list_a, val);
+		return (*list_a);
 	}
 }
