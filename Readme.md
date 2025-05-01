@@ -44,8 +44,5 @@ CONTROLE FINAL:		- makefile: NAME "push_swap" et flag -g
 							- coder swap_a (voir si necessaire rra)
 
 
-30.04
 
-		voir pour inverser tri radix 		
-		dans ft_logic.c -> logic bis:		bit 1 -> list_b		bit 0 -> list_a							
-
+----   OK   -----

@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:05:01 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:05:03 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 20:42:16 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_list_ps	*ft_create(int value)
 {

@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:04:52 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:04:53 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 21:25:04 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_double(t_list_ps *list_a)
 {
@@ -37,7 +37,7 @@ void	ft_index(t_list_ps *list_a, t_list_ps *copy)
 	t_list_ps	*temp;
 	int			i;
 
-	i = 0;
+	i = 1;
 	while (copy)
 	{
 		temp = list_a;

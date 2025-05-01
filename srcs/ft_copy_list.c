@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:03:11 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 23:02:15 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 17:36:50 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	ft_copy_list(t_list_ps *list_a, t_list_ps **list_copy)
 {

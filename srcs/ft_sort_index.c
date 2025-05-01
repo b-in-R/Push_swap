@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:37:45 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:27:54 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 17:37:33 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	find_index_max(t_list_ps *lst)
 {

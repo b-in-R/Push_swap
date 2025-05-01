@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 18:44:00 by binr              #+#    #+#             */
-/*   Updated: 2025/04/30 22:26:44 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 21:26:23 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // 1 for add_front, 0 for add_back (no print)
 void	ft_push(t_list_ps **src, t_list_ps **dest, int front)

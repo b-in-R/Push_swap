@@ -6,11 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:43:29 by rabiner           #+#    #+#             */
-/*   Updated: 2025/04/30 22:27:11 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/01 17:37:04 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	push_a_by_index(t_list_ps **list_a, t_list_ps **list_b)
 {
