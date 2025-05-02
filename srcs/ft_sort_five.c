@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:56:20 by binr              #+#    #+#             */
-/*   Updated: 2025/05/02 16:02:41 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/02 16:45:58 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,22 @@ void	extract_two_mins(t_list_ps **a, t_list_ps **b)
 	pushing_mins(a, b, pos);
 }
 
-void	extract_min(t_list_ps **a, t_list_ps **b)
+void	extract_one_min(t_list_ps **a, t_list_ps **b)
 {
-	while ((*a)->index != 1)
+	t_list_ps	*tmp;
+	int			pos;
+
+	tmp = *a;
+	pos = 0;
+	while (tmp->index != 1)
 	{
-		ft_rotate(a, 1);
+		pos++;
+		tmp = tmp->next;
 	}
+	while ((*a)->index != 1 && pos == 3)
+		ft_r_rotate(a);
+	while ((*a)->index != 1 && pos < 3)
+		ft_rotate(a, 1);
 	ft_push(a, b, 1);
 }
 
@@ -88,7 +98,7 @@ void	sort_five(t_list_ps **lst, t_logic *val)
 	list_b = NULL;
 	if (val->len == 4)
 	{
-		extract_min(&list_a, &list_b);
+		extract_one_min(&list_a, &list_b);
 		ft_printf("pb\n");
 	}
 	else if (val->len == 5)
