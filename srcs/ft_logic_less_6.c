@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:43:29 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/01 17:37:04 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/02 11:45:43 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	push_a_by_index(t_list_ps **list_a, t_list_ps **list_b)
 {
-	if ((*list_b)->index == 0)
+	if ((*list_b)->index == 1)
 	{
 		ft_push(list_b, list_a, 1);
 		ft_printf("pa\n");
 	}
-	else if ((*list_b)->index == 1)
-		sort_index_one(list_a, list_b);
 	else if ((*list_b)->index == 2)
-		sort_index_two(list_a, list_b);
+		sort_index_one(list_a, list_b);
 	else if ((*list_b)->index == 3)
-		sort_index_three(list_a, list_b);
+		sort_index_two(list_a, list_b);
 	else if ((*list_b)->index == 4)
+		sort_index_three(list_a, list_b);
+	else if ((*list_b)->index == 5)
 	{
 		ft_push(list_b, list_a, 1);
 		ft_printf("pa\n");
