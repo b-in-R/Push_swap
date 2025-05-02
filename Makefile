@@ -6,7 +6,7 @@
 #    By: binr <binr@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/29 12:28:22 by rabiner           #+#    #+#              #
-#    Updated: 2025/05/02 12:28:41 by binr             ###   ########.fr        #
+#    Updated: 2025/05/02 15:10:58 by binr             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS_DIR = srcs
 SRCS =	push_swap.c ft_sort.c ft_logic.c \
 		ft_copy_list.c ft_utils.c ft_node.c \
 		ft_operations.c ft_logic_less_6.c \
-		ft_sort_index.c
+		ft_sort_index.c ft_sort_five.c
 
 SRCS := $(addprefix $(SRCS_DIR)/, $(SRCS))
 

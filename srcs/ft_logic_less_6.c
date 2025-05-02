@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 14:43:29 by rabiner           #+#    #+#             */
-/*   Updated: 2025/05/02 11:45:43 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/02 15:50:36 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,28 +71,6 @@ void	tinysort(t_list_ps **lst)
 	b = a->next;
 	c = b->next;
 	sort_three(lst, a->index, b->index, c->index);
-}
-
-void	sort_five(t_list_ps **lst, t_logic *val)
-{
-	t_list_ps	*list_a;
-	t_list_ps	*list_b;
-
-	list_a = *lst;
-	list_b = NULL;
-	ft_push(&list_a, &list_b, 1);
-	ft_printf("pb\n");
-	if (val->len == 5)
-	{
-		ft_push(&list_a, &list_b, 1);
-		ft_printf("pb\n");
-		if (!ft_check_sort(list_b))
-			ft_swap(&list_b, 2);
-	}
-	tinysort(&list_a);
-	while (list_b)
-		push_a_by_index(&list_a, &list_b);
-	*lst = list_a;
 }
 
 t_list_ps	*ft_logic_less_6(t_list_ps **list_a, t_logic *val)

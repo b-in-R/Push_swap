@@ -45,4 +45,11 @@ CONTROLE FINAL:		- makefile: NAME "push_swap" et flag -g
 
 
 
+
+2.05
+
+		voir pour tri == 5 : 		3 4 1 5 2  (max 13)
+
+
+
 ----   OK   -----
