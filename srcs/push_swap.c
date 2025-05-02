@@ -6,21 +6,11 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:04:43 by binr              #+#    #+#             */
-/*   Updated: 2025/05/01 20:47:13 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/02 12:27:57 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	ft_exit_error(char **str, t_list_ps *lst, int free_s, int free_l)
-{
-	if (free_s == 1)
-		ft_free_str(str);
-	if (free_l == 1)
-		ft_free_list(lst);
-	write(2, "Error\n", 6);
-	return (1);
-}
 
 int	check_sign_error(char **str)
 {
@@ -113,8 +103,7 @@ int	main(int ac, char **av)
 		str = av + 1;
 	if (check_errors(str))
 		return (ft_exit_error(str, NULL, free_split, 0));
-	if (ft_sort(str))
-		return (ft_exit_error(str, NULL, free_split, 0));
+	ft_sort(str, free_split);
 	if (free_split == 1)
 		ft_free_str(str);
 	return (0);

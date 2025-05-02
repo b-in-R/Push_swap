@@ -6,7 +6,7 @@
 /*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:33:54 by binr              #+#    #+#             */
-/*   Updated: 2025/05/01 21:25:47 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/02 12:28:30 by binr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ typedef struct s_logic
 	int					len;
 }						t_logic;
 
-//push_swap.c
-int			ft_exit_error(char **str, t_list_ps *lst, int free_s, int free_l);
-
-//ft_free.c
+//ft_utils.c
 void		ft_free_list(t_list_ps *lst);
 void		ft_free_str(char **str);
+int			ft_exit_error(char **str, t_list_ps *lst, int free_s, int free_l);
 
 //ft_sort.c
-int			ft_sort(char **str);
+void		ft_sort(char **str, int free_split);
 int			ft_check_sort(t_list_ps *list_a);
 
 //ft_node.c
