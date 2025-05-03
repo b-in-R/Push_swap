@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: binr <binr@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rabiner <rabiner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:04:43 by binr              #+#    #+#             */
-/*   Updated: 2025/05/02 12:27:57 by binr             ###   ########.fr       */
+/*   Updated: 2025/05/03 18:52:37 by rabiner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int ac, char **av)
 
 	free_split = 0;
 	if (ac < 2)
-		return (ft_exit_error(NULL, NULL, 0, 0));
+		return (0);
 	if (ac == 2)
 	{
 		free_split = 1;
